@@ -1,0 +1,4 @@
+pandas
+simple_salesforce
+openpyxl
+ipython
