@@ -1,4 +1,3 @@
-from datetime import datetime
 from src.data_collector import get_data
 from src.file_generator import generate_file
 from src.emails import Email
