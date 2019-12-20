@@ -3,3 +3,4 @@ simple_salesforce
 openpyxl
 ipython
 schedule
+flask
