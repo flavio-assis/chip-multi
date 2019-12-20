@@ -20,9 +20,9 @@ class Logger():
             from pathlib import Path
             Path(self.log_file).touch()
 
-    def send(self, msg_error):
+    def send(self, msg):
         """Log errors into file sf_chip_multi.log in the directory /log/sf_chip_multi."""
 
         self.check_dir()
         with open(self.log_file, "a") as logger_file:
-            logger_file.write("{}, {}\n".format(self.time, msg_error))
+            logger_file.write("{}, {}\n".format(self.time, msg))
