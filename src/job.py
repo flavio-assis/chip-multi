@@ -16,7 +16,7 @@ def job():
     gmail = Email()
     gmail.login()
     _body, _subject, _recipients, _attachs = format_mail(attachs=[chip_multi_url])
-    gmail.send_mail(to=['flavio.assis@stone.com.br'], subject=_subject, body=_body, attachments=_attachs)
+    gmail.send_mail(to=_recipients, subject=_subject, body=_body, attachments=_attachs)
     gmail.logout()
     logger.send('Finish Processing')
 
