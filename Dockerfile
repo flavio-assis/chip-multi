@@ -4,10 +4,11 @@ WORKDIR /chip-multi
 
 COPY . /chip-multi
 
-RUN pip install --upgrade pip
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
 RUN apt-get update && apt-get install -y \
     tree \
     vim
+RUN pip install --upgrade pip
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-CMD ["python3", "__main__.py"]
+RUN chmod a+x /chip-multi/api/entrypoint-api.sh \
+    && chmod a+x /chip-multi/src/entrypoint-job.sh

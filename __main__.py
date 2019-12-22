@@ -1,23 +1,19 @@
 import time
 import schedule
-from src import job
-from flask import Flask
-import json
+from src.job import job
+from src.logger import Logger
+from src.config import get_config
 
 
-app = Flask(__name__)
-
-@app.route('/')
-def check_life():
-    return json.dumps({"Message": "Great! I'm up!"})
+rt = get_config()['RUNNING_TIME']
+logger = Logger()
 
 
 def main():
-    schedule.every().day.at("18:30").do(job)
-    app.run(host='0.0.0.0',
-            port=5000)
+    logger.send('Starting Application')
+    schedule.every().day.at(rt).do(job)
 
-    while 1:
+    while True:
         schedule.run_pending()
         time.sleep(1)
 

@@ -8,7 +8,7 @@ def get_config():
 
     _config = defaultdict(lambda: False)
     _keys = ['SF_USER', 'SF_PWD', 'SF_TOKEN',
-             'MAIL_USER', 'MAIL_PASS']
+             'MAIL_USER', 'MAIL_PASS', 'RUNNING_TIME']
 
     for _key in _keys:
         if _key in os.environ.keys():
@@ -16,6 +16,5 @@ def get_config():
         else:
             logger = Logger()
             logger.send(f"The key {_key} is not set in environment, exiting...")
-            sys.exit(4)
-
+            raise Exception
     return _config

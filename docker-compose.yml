@@ -1,0 +1,33 @@
+version: "3.6"
+
+services:
+  app:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+      - 5000:5000
+    networks:
+      - chipmulti
+    env_file:
+      - .env
+    entrypoint: ./api/entrypoint-api.sh
+
+
+  job:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    networks:
+      - chipmulti
+    env_file:
+      - .env
+    entrypoint: ./src/entrypoint-job.sh
+
+networks:
+  chipmulti:
+    name: chip-multi-network
+    driver: bridge
